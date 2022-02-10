@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+        background: rgb(0, 0, 0);
+    }
+    .name {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1em;
+        color: #fff;
+        text-align: center;
+        margin-top: 33%;
+    }
+        .clock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        color: aqua;
+        font-size: 60px;
+        font-family: Orbitron;
+        letter-spacing: 7px;
+    }
+    .clock {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e613, 0 0 40px #00e632, 0 0 50px #00e61f, 0 0 60px #29ff3a, 0 0 70px #00e658;
+    }
+    /* to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4dff4d, 0 0 40px #4dffa6, 0 0 50px #77ff4d, 0 0 60px #85ff4d, 0 0 70px #1cff60, 0 0 80px #26ff55; */
+ 
+  }
+}
+        </style>
+</head>
+<body>
+    <div id="clockDisplay" class="clock" onload="showTime()"></div>
+    <div class="name">
+        <p>Made by Tanvir</p>
+    </div>
+
+    <script>
+        // get current date and time
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = "AM";
+            
+            if(h==0){
+                h = 12;
+            }
+
+            //if time is greater than 12, change to PM
+            if (h >= 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+
+            let time = h + ':' + m + ':' + s + ':' + ' ' + session;
+            document.getElementById("clockDisplay").innerText = time;
+            document.getElementById("clockDisplay").textContent = time;
+            setTimeout(showTime, 1000)
+        }
+    showTime();
+    </script>
+</body>
+</html> 
